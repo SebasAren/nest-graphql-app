@@ -1,0 +1,31 @@
+type Author {
+  id: Int!
+  firstName: String
+  lastName: String
+  posts: [Post]
+}
+
+type Post {
+  id: Int!
+  title: String!
+  votes: Int
+}
+
+input NewPost {
+  title: String!
+  message: String!
+}
+
+type Query {
+  author(id: Int!): Author
+  authors: [Author]
+  posts: [Post]
+}
+
+type Mutation {
+  addPostToAuthor(authorId: Int!, newPost: NewPost!): Post
+}
+
+type Subscription {
+  postAdded: Post
+}
